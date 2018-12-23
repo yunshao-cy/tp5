@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ueditor - demo</title>
+	<style type="text/css">
+		.editor{width: 900px;height: 500px;margin: 10px auto;}
+	</style>
+</head>
+<body>
+	<form action="demo_handle.php" method="post">
+		<div class="editor">
+			<!-- 加载编辑器的容器 -->
+		    <script id="container" name="content" type="text/plain" style="width: 100%;height: 100%;">
+		        <!-- 这里写你的初始化内容 -->
+		    </script>
+		    <input type="submit" value="提交">
+		</div>
+		
+	</form>
+
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('container',{
+        	toolbars: [['fullscreen', 'source', 'undo', 'redo', 'bold','simpleupload','insertimage']],
+		});
+        ue.ready(function(){
+        	ue.setContent('<p>hello world</p>');
+        })
+    </script>
+</body>
+</html>
