@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"/usr/share/nginx/html/tp5/public/../application/admin/view/article/edit.html";i:1545549008;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -6,29 +7,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta name="renderer" content="webkit">
 <title></title>
-<link rel="stylesheet" href="__STATIC__/admin/css/pintuer.css">
-<link rel="stylesheet" href="__STATIC__/admin/css/admin.css">
-<script src="__STATIC__/admin/js/jquery.js"></script>
-<script src="__STATIC__/admin/js/pintuer.js"></script>
+<link rel="stylesheet" href="/static/admin/css/pintuer.css">
+<link rel="stylesheet" href="/static/admin/css/admin.css">
+<script src="/static/admin/js/jquery.js"></script>
+<script src="/static/admin/js/pintuer.js"></script>
 <!-- 配置文件 -->
-<script type="text/javascript" src="__UEDITOR__/ueditor.config.js"></script>
+<script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
 <!-- 编辑器源码文件 -->
-<script type="text/javascript" src="__UEDITOR__/ueditor.all.min.js"></script>
+<script type="text/javascript" src="/ueditor/ueditor.all.min.js"></script>
 <!-- 语言包 -->
-<script type="text/javascript" src="__UEDITOR__/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 <body>
 <div class="panel admin-panel">
   <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 添加博文</strong></div>
   <div class="body-content">
-    <form method="post" class="form-x" action="{:url('admin/article/update')}"> 
-      <input type="hidden" name="a_id" value="{$art.a_id}">     
+    <form method="post" class="form-x" action="<?php echo url('admin/article/update'); ?>"> 
+      <input type="hidden" name="a_id" value="<?php echo $art['a_id']; ?>">     
       <div class="form-group">
         <div class="label">
           <label>标题：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="a_title" value="{$art.a_title}" />
+          <input type="text" class="input" name="a_title" value="<?php echo $art['a_title']; ?>" />
           <div class="tips"></div>
         </div>
       </div>
@@ -47,7 +48,7 @@
           <label>作者：</label>
         </div>
         <div class="field">
-          <input type="text" class="input w50" name="a_author" value="{$art.a_author}">
+          <input type="text" class="input w50" name="a_author" value="<?php echo $art['a_author']; ?>">
           <div class="tips"></div>
         </div>
       </div>
@@ -57,11 +58,11 @@
         </div>
         <div class="field">
           <div class="button-group radio">
-          <label class="button {if condition="$art.a_rec == '是'"} active{/if}"><span class="icon icon-check"></span>             
-              <input name="a_rec" value="1" type="radio" {if condition="$art.a_rec == '是'"} checked="checked"{/if}>是             
+          <label class="button <?php if($art['a_rec'] == '是'): ?> active<?php endif; ?>"><span class="icon icon-check"></span>             
+              <input name="a_rec" value="1" type="radio" <?php if($art['a_rec'] == '是'): ?> checked="checked"<?php endif; ?>>是             
           </label>             
-          <label class="button {if condition="$art.a_rec == '否'"} active{/if}"><span class="icon icon-check"></span>             
-              <input name="a_rec" value="1" type="radio" {if condition="$art.a_rec == '否'"} checked="checked"{/if}>否             
+          <label class="button <?php if($art['a_rec'] == '否'): ?> active<?php endif; ?>"><span class="icon icon-check"></span>             
+              <input name="a_rec" value="1" type="radio" <?php if($art['a_rec'] == '否'): ?> checked="checked"<?php endif; ?>>否             
           </label>         
           </div>       
         </div>
@@ -71,7 +72,7 @@
           <label>阅读：</label>
         </div>
         <div class="field">
-          <input type="text" class="input w50" name="a_read" value="{$art.a_read}">
+          <input type="text" class="input w50" name="a_read" value="<?php echo $art['a_read']; ?>">
           <div class="tips"></div>
         </div>
       </div>
@@ -80,7 +81,7 @@
           <label>赞：</label>
         </div>
         <div class="field">
-          <input type="text" class="input w50" name="a_like" value="{$art.a_like}">
+          <input type="text" class="input w50" name="a_like" value="<?php echo $art['a_like']; ?>">
           <div class="tips"></div>
         </div>
       </div>
@@ -89,9 +90,8 @@
           <label>标签：</label>
         </div>
         <div class="field">
-          {volist name="tags" id="vo"}
-          <input type="checkbox" name="t_ids[]" value="{$vo.t_id}" {if condition="in_array($vo.t_name,explode(',',$art.t_ids))"} checked="checked"{/if}>{$vo.t_name}
-          {/volist}
+          <?php if(is_array($tags) || $tags instanceof \think\Collection || $tags instanceof \think\Paginator): $i = 0; $__LIST__ = $tags;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+          <input type="checkbox" name="t_ids[]" value="<?php echo $vo['t_id']; ?>" <?php if(in_array($vo['t_name'],explode(',',$art['t_ids']))): ?> checked="checked"<?php endif; ?>><?php echo $vo['t_name']; endforeach; endif; else: echo "" ;endif; ?>
           <div class="tips"></div>
         </div>
       </div>
@@ -101,9 +101,9 @@
         </div>
         <div class="field">
           <select name="c_id" class="input w50">
-            {volist name="cates" id="vo"}
-            <option value="{$vo.c_id}" {if condition="$art.c_id == $vo.c_id"} selected="selected" {/if}>{$vo.c_name}</option>
-            {/volist}
+            <?php if(is_array($cates) || $cates instanceof \think\Collection || $cates instanceof \think\Paginator): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+            <option value="<?php echo $vo['c_id']; ?>" <?php if($art['c_id'] == $vo['c_id']): ?> selected="selected" <?php endif; ?>><?php echo $vo['c_name']; ?></option>
+            <?php endforeach; endif; else: echo "" ;endif; ?>
           </select>
           <div class="tips"></div>
         </div>
@@ -115,7 +115,7 @@
         </div>
         <div class="field">
         <!-- 加载编辑器的容器 -->
-            <script id="container" name="a_content" type="text/plain">{$art.a_content}</script>
+            <script id="container" name="a_content" type="text/plain"><?php echo $art['a_content']; ?></script>
         <!-- 加载编辑器的容器 -->
             <div class="tips"></div>
         </div>

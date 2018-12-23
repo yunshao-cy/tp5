@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"/usr/share/nginx/html/tp5/public/../application/index/view/index/index.html";i:1545549281;}*/ ?>
 ﻿<!doctype html>
 <html>
 <head>
@@ -5,15 +6,15 @@
 <title>黑色时间轴个人博客模板</title>
 <meta name="keywords" content="黑色模板,个人网站模板,个人博客模板,博客模板,css3,html5,网站模板" />
 <meta name="description" content="这是一个有关黑色时间轴的css3 html5 网站模板" />
-<link href="__STATIC__/index/css/styles.css" rel="stylesheet">
-<link href="__STATIC__/index/css/animation.css" rel="stylesheet">
+<link href="/static/index/css/styles.css" rel="stylesheet">
+<link href="/static/index/css/animation.css" rel="stylesheet">
 <!-- 返回顶部调用 begin -->
-<link href="__STATIC__/index/css/lrtk.css" rel="stylesheet" />
-<script type="text/javascript" src="__STATIC__/index/js/jquery.js"></script>
-<script type="text/javascript" src="__STATIC__/index/js/js.js"></script>
+<link href="/static/index/css/lrtk.css" rel="stylesheet" />
+<script type="text/javascript" src="/static/index/js/jquery.js"></script>
+<script type="text/javascript" src="/static/index/js/js.js"></script>
 <!-- 返回顶部调用 end-->
 <!--[if lt IE 9]>
-<script src="__STATIC__/index/js/modernizr.js"></script>
+<script src="/static/index/js/modernizr.js"></script>
 <![endif]-->
 </head>
 <body>
@@ -30,7 +31,7 @@
       <li><a href="/newstalk/" target="_blank" title="碎言碎语">碎言碎语</a></li>
       <li><a href="/news/jsex/" target="_blank" title="JS 实例代码演示">JS实例</a></li>
     </ul>
-    <script src="__STATIC__/index/js/silder.js"></script><!--获取当前页导航 高亮显示标题--> 
+    <script src="/static/index/js/silder.js"></script><!--获取当前页导航 高亮显示标题--> 
   </nav>
 </header>
 <!--header end-->

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:60:"D:\www\tp5\public/../application/admin\view\index\index.html";i:1545355749;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"/usr/share/nginx/html/tp5/public/../application/admin/view/index/index.html";i:1545549213;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -17,7 +17,7 @@
     <h1><img src="/static/admin/images/y.jpg" class="radius-circle rotate-hover" height="50" alt="" />后台管理中心</h1>
   </div>
   <div class="head-l">
-	  	<a class="button button-little bg-green" href="" target="_blank">
+	  	<a class="button button-little bg-green" href="<?php echo url('index/index/index'); ?>" target="_blank">
 	  		<span class="icon-home"></span> 前台首页
 	  	</a> &nbsp;&nbsp;
 	  	

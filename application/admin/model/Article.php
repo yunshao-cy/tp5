@@ -18,10 +18,22 @@ class Article extends Model
 		return $a_rec[$value];
 	}
 
-	// public function getTIdsAttr ($value)
-	// {
-	// 	return explode(',', $value);
-	// }
+	 public function getTIdsAttr ($value)
+	 {
+         $arr = explode(',',$value);
+         $data = [];
+         $tags = Tag::all();
+         foreach ($tags as $v){
+             $data[$v['t_id']] = $v['t_name'];
+         }
+         $t_names = '';
+         foreach ($arr as $v) {
+             if(array_key_exists($v,$data)){
+                 $t_names .= "{$data[$v]},";
+             }
+         }
+         return rtrim($t_names,',');
+	 }
 
 	// 修改器
 	public function setTIdsAttr ($value)
